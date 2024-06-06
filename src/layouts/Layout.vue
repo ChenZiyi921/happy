@@ -4,7 +4,7 @@ import { useAppStore } from "@/store/modules/app"
 import { useSettingsStore } from "@/store/modules/settings"
 import { storeToRefs } from "pinia"
 import { computed } from "vue"
-import { AppMain, NavigationBar, Sidebar } from "./components"
+import { AppMain, NavigationBar, Sidebar } from "./components/index.js"
 
 const appStore = useAppStore()
 const settingsStore = useSettingsStore()
@@ -15,7 +15,7 @@ const layoutClasses = computed(() => {
   return {
     hideSidebar: !appStore.sidebar.opened,
     openSidebar: appStore.sidebar.opened,
-    withoutAnimation: appStore.sidebar.withoutAnimation,
+    withoutAnimation: appStore.sidebar.withoutAnimation
   }
 })
 
@@ -27,17 +27,11 @@ const handleClickOutside = () => {
 
 <template>
   <div :class="layoutClasses" class="app-wrapper">
-    <!-- mobile 端侧边栏遮罩层 -->
-    <div v-if="layoutClasses.mobile && layoutClasses.openSidebar" class="drawer-bg" @click="handleClickOutside" />
-    <!-- 左侧边栏 -->
     <Sidebar class="sidebar-container" />
-    <!-- 主容器 -->
     <div :class="{ hasTagsView: showTagsView }" class="main-container">
-      <!-- 头部导航栏和标签栏 -->
       <div :class="{ 'fixed-header': fixedHeader }" class="layout-header">
         <NavigationBar />
       </div>
-      <!-- 页面主体内容 -->
       <AppMain class="app-main" />
     </div>
   </div>

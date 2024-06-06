@@ -1,17 +1,14 @@
-/** 统一处理 localStorage */
-
+import { type SidebarClosed, type SidebarOpened } from "@/constants/app-key"
 import CacheKey from "@/constants/cache-key"
-import { type SidebarOpened, type SidebarClosed } from "@/constants/app-key"
 import { type ThemeName } from "@/hooks/useTheme"
 import { type TagView } from "@/store/modules/tags-view"
-import { type LayoutSettings } from "@/config/layouts"
 
 //#region 系统布局配置
 export const getConfigLayout = () => {
   const json = localStorage.getItem(CacheKey.CONFIG_LAYOUT)
-  return json ? (JSON.parse(json) as LayoutSettings) : null
+  return json ? JSON.parse(json) : null
 }
-export const setConfigLayout = (settings: LayoutSettings) => {
+export const setConfigLayout = (settings) => {
   localStorage.setItem(CacheKey.CONFIG_LAYOUT, JSON.stringify(settings))
 }
 export const removeConfigLayout = () => {
