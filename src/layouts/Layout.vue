@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup>
 import { useDevice } from "@/hooks/useDevice"
 import { useAppStore } from "@/store/modules/app"
 import { useSettingsStore } from "@/store/modules/settings"
@@ -8,7 +8,6 @@ import { AppMain, NavigationBar, Sidebar } from "./components/index.js"
 
 const appStore = useAppStore()
 const settingsStore = useSettingsStore()
-const { showTagsView, fixedHeader } = storeToRefs(settingsStore)
 
 const layoutClasses = computed(() => {
   return {
@@ -25,8 +24,8 @@ const handleClickOutside = () => {
 <template>
   <div :class="layoutClasses" class="app-wrapper">
     <Sidebar class="sidebar-container" />
-    <div :class="{ hasTagsView: showTagsView }" class="main-container">
-      <div :class="{ 'fixed-header': fixedHeader }" class="layout-header">
+    <div class="main-container">
+      <div :class="'fixed-header'" class="layout-header">
         <NavigationBar />
       </div>
       <AppMain class="app-main" />

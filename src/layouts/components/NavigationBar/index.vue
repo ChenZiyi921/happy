@@ -1,24 +1,20 @@
 <script lang="ts" setup>
-import { useDevice } from "@/hooks/useDevice"
 import { useLayoutMode } from "@/hooks/useLayoutMode"
 import { useAppStore } from "@/store/modules/app"
 import { useUserStore } from "@/store/modules/user"
 import { UserFilled } from "@element-plus/icons-vue"
 import { useRouter } from "vue-router"
 import Hamburger from "../Hamburger/index.vue"
-import Sidebar from "../Sidebar/index.vue"
 
 const { isTop } = useLayoutMode()
 const router = useRouter()
 const appStore = useAppStore()
 const userStore = useUserStore()
 
-/** 切换侧边栏 */
 const toggleSidebar = () => {
   appStore.toggleSidebar(false)
 }
 
-/** 登出 */
 const logout = () => {
   userStore.logout()
   router.push("/login")
@@ -27,8 +23,7 @@ const logout = () => {
 
 <template>
   <div class="navigation-bar">
-    <Hamburger v-if="!isTop" :is-active="appStore.sidebar.opened" class="hamburger" @toggle-click="toggleSidebar" />
-    <Sidebar v-if="isTop" class="sidebar" />
+    <Hamburger :is-active="appStore.sidebar.opened" class="hamburger" @toggle-click="toggleSidebar" />
     <div class="right-menu">
       <el-dropdown class="right-menu-item">
         <div class="right-menu-avatar">

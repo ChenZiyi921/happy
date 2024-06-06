@@ -1,20 +1,13 @@
 <script lang="ts" setup>
 import logo from "@/assets/layouts/logo.png?url"
-import { useLayoutMode } from "@/hooks/useLayoutMode"
 
-interface Props {
-  collapse?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps(), {
   collapse: true
 })
-
-const { isLeft, isTop } = useLayoutMode()
 </script>
 
 <template>
-  <div class="layout-logo-container" :class="{ collapse: props.collapse, 'layout-mode-top': isTop }">
+  <div class="layout-logo-container" :class="{ collapse: props.collapse }">
     <transition name="layout-logo-fade">
       <router-link v-if="props.collapse" key="collapse" to="/">
         <img :src="logo" class="layout-logo" />
