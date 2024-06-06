@@ -55,8 +55,7 @@ export default ({ mode }) => {
            */
           manualChunks: {
             vue: ["vue", "vue-router", "pinia"],
-            element: ["element-plus", "@element-plus/icons-vue"],
-            vxe: ["vxe-table", "vxe-table-plugin-element", "xe-utils"]
+            element: ["element-plus", "@element-plus/icons-vue"]
           }
         }
       }
@@ -73,24 +72,15 @@ export default ({ mode }) => {
             /** 打包时移除所有注释 */
             legalComments: "none"
           },
-    /** Vite 插件 */
     plugins: [
       vue(),
       vueJsx(),
-      /** 将 SVG 静态图转化为 Vue 组件 */
       svgLoader({ defaultImport: "url" }),
-      /** SVG */
       createSvgIconsPlugin({
         iconDirs: [path.resolve(process.cwd(), "src/icons/svg")],
         symbolId: "icon-[dir]-[name]"
       }),
-      /** UnoCSS */
       UnoCSS()
-    ],
-    /** Vitest 单元测试配置：https://cn.vitest.dev/config */
-    test: {
-      include: ["tests/**/*.test.ts"],
-      environment: "jsdom"
-    }
+    ]
   }
 }

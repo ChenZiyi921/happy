@@ -6,14 +6,10 @@ import router from "@/router"
 import { usePermissionStoreHook } from "@/store/modules/permission"
 import { useUserStoreHook } from "@/store/modules/user"
 import { getToken } from "@/utils/cache/cookies"
-import NProgress from "nprogress"
-import "nprogress/nprogress.css"
 
 const { setTitle } = useTitle()
-NProgress.configure({ showSpinner: false })
 
 router.beforeEach(async (to, _from, next) => {
-  NProgress.start()
   const userStore = useUserStoreHook()
   const permissionStore = usePermissionStoreHook()
   const token = getToken()
@@ -39,5 +35,4 @@ router.beforeEach(async (to, _from, next) => {
 router.afterEach((to) => {
   setRouteChange(to)
   setTitle(to.meta.title)
-  NProgress.done()
 })
