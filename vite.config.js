@@ -1,10 +1,9 @@
-import path, { resolve } from "path"
 import vue from "@vitejs/plugin-vue"
 import vueJsx from "@vitejs/plugin-vue-jsx"
+import path, { resolve } from "path"
+import UnoCSS from "unocss/vite"
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons"
 import svgLoader from "vite-svg-loader"
-import UnoCSS from "unocss/vite"
-
 export default ({ mode }) => {
   return {
     /** 打包时根据实际情况修改 base */
