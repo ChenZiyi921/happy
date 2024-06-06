@@ -7,7 +7,7 @@ const Layouts = () => import("@/layouts/index.vue")
 export const constantRoutes: RouteRecordRaw[] = [
   {
     path: "/404",
-    component: () => import("@/views/error-page/404.vue"),
+    component: () => import("@/views/404.vue"),
     meta: {
       hidden: true
     },
