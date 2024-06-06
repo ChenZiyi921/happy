@@ -8,7 +8,6 @@ import { useRouter } from "vue-router"
 import Hamburger from "../Hamburger/index.vue"
 import Sidebar from "../Sidebar/index.vue"
 
-const { isMobile } = useDevice()
 const { isTop } = useLayoutMode()
 const router = useRouter()
 const appStore = useAppStore()
@@ -28,13 +27,8 @@ const logout = () => {
 
 <template>
   <div class="navigation-bar">
-    <Hamburger
-      v-if="!isTop || isMobile"
-      :is-active="appStore.sidebar.opened"
-      class="hamburger"
-      @toggle-click="toggleSidebar"
-    />
-    <Sidebar v-if="isTop && !isMobile" class="sidebar" />
+    <Hamburger v-if="!isTop" :is-active="appStore.sidebar.opened" class="hamburger" @toggle-click="toggleSidebar" />
+    <Sidebar v-if="isTop" class="sidebar" />
     <div class="right-menu">
       <el-dropdown class="right-menu-item">
         <div class="right-menu-avatar">

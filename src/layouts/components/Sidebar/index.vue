@@ -14,7 +14,6 @@ const v3SidebarMenuBgColor = getCssVariableValue("--v3-sidebar-menu-bg-color")
 const v3SidebarMenuTextColor = getCssVariableValue("--v3-sidebar-menu-text-color")
 const v3SidebarMenuActiveTextColor = getCssVariableValue("--v3-sidebar-menu-active-text-color")
 
-const { isMobile } = useDevice()
 const { isLeft, isTop } = useLayoutMode()
 const route = useRoute()
 const appStore = useAppStore()
@@ -61,7 +60,7 @@ const hiddenScrollbarVerticalBar = computed(() => {
         :active-text-color="activeTextColor"
         :unique-opened="true"
         :collapse-transition="false"
-        :mode="isTop && !isMobile ? 'horizontal' : 'vertical'"
+        :mode="isTop  ? 'horizontal' : 'vertical'"
       >
         <SidebarItem v-for="route in noHiddenRoutes" :key="route.path" :item="route" :base-path="route.path" />
       </el-menu>
