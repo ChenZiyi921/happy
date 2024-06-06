@@ -1,31 +1,29 @@
 <script lang="ts" setup>
-import { type LoginRequestData } from "@/api/login/types/login"
 import { useUserStore } from "@/store/modules/user"
 import { Lock, User } from "@element-plus/icons-vue"
-import { type FormInstance, type FormRules } from "element-plus"
 import { reactive, ref } from "vue"
 import { useRouter } from "vue-router"
 
 const router = useRouter()
 
 /** 登录表单元素的引用 */
-const loginFormRef = ref<FormInstance | null>(null)
+const loginFormRef = ref(null)
 
 /** 登录按钮 Loading */
 const loading = ref(false)
 
 /** 登录表单数据 */
-const loginFormData: LoginRequestData = reactive({
-  username: "admin",
-  password: "12345678",
+const loginFormData = reactive({
+  account: "",
+  password: "",
   code: ""
 })
 /** 登录表单校验规则 */
-const loginFormRules: FormRules = {
-  username: [{ required: true, message: "请输入用户名", trigger: "blur" }],
+const loginFormRules = {
+  account: [{ required: true, message: "请输入用户名", trigger: "blur" }],
   password: [
     { required: true, message: "请输入密码", trigger: "blur" },
-    { min: 8, max: 16, message: "长度在 8 到 16 个字符", trigger: "blur" }
+    { min: 6, message: "长度6个字符", trigger: "blur" }
   ]
 }
 /** 登录逻辑 */
@@ -56,9 +54,9 @@ const handleLogin = () => {
     <div class="login-card">
       <div class="content">
         <el-form ref="loginFormRef" :model="loginFormData" :rules="loginFormRules" @keyup.enter="handleLogin">
-          <el-form-item prop="username">
+          <el-form-item prop="account">
             <el-input
-              v-model.trim="loginFormData.username"
+              v-model.trim="loginFormData.account"
               placeholder="用户名"
               type="text"
               tabindex="1"

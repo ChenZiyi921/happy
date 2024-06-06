@@ -1,18 +1,18 @@
 <script lang="ts" setup>
-import { nextTick, reactive, ref } from "vue"
-import { type ElMessageBoxOptions, ElMessageBox, ElMessage } from "element-plus"
 import { deleteTableDataApi, getTableDataApi } from "@/api/table"
 import { type GetTableResponseData } from "@/api/table/types/table"
-import RoleColumnSolts from "./tsx/RoleColumnSolts"
-import StatusColumnSolts from "./tsx/StatusColumnSolts"
+import { ElMessage, ElMessageBox, type ElMessageBoxOptions } from "element-plus"
+import { nextTick, reactive, ref } from "vue"
 import {
+  type VxeFormInstance,
+  type VxeFormProps,
   type VxeGridInstance,
   type VxeGridProps,
   type VxeModalInstance,
-  type VxeModalProps,
-  type VxeFormInstance,
-  type VxeFormProps
+  type VxeModalProps
 } from "vxe-table"
+import RoleColumnSolts from "./tsx/RoleColumnSolts"
+import StatusColumnSolts from "./tsx/StatusColumnSolts"
 
 defineOptions({
   // 命名当前组件
@@ -22,7 +22,7 @@ defineOptions({
 //#region vxe-grid
 interface RowMeta {
   id: string
-  username: string
+  account: string
   roles: string
   phone: string
   email: string
@@ -43,7 +43,7 @@ const xGridOpt: VxeGridProps = reactive({
   formConfig: {
     items: [
       {
-        field: "username",
+        field: "account",
         itemRender: {
           name: "$input",
           props: { placeholder: "用户名", clearable: true }
@@ -80,7 +80,7 @@ const xGridOpt: VxeGridProps = reactive({
   /** 自定义列配置项 */
   customConfig: {
     /** 是否允许列选中  */
-    checkMethod: ({ column }) => !["username"].includes(column.field)
+    checkMethod: ({ column }) => !["account"].includes(column.field)
   },
   /** 列配置 */
   columns: [
@@ -89,7 +89,7 @@ const xGridOpt: VxeGridProps = reactive({
       width: "50px"
     },
     {
-      field: "username",
+      field: "account",
       title: "用户名"
     },
     {
@@ -156,7 +156,7 @@ const xGridOpt: VxeGridProps = reactive({
 
           /** 接口需要的参数 */
           const params = {
-            username: form.username || undefined,
+            account: form.account || undefined,
             phone: form.phone || undefined,
             size: page.pageSize,
             currentPage: page.currentPage
@@ -194,13 +194,13 @@ const xFormOpt: VxeFormProps = reactive({
   titleColon: false,
   /** 表单数据 */
   data: {
-    username: "",
+    account: "",
     password: ""
   },
   /** 项列表 */
   items: [
     {
-      field: "username",
+      field: "account",
       title: "用户名",
       itemRender: { name: "$input", props: { placeholder: "请输入" } }
     },
@@ -225,7 +225,7 @@ const xFormOpt: VxeFormProps = reactive({
   ],
   /** 校验规则 */
   rules: {
-    username: [
+    account: [
       {
         required: true,
         validator: ({ itemValue }) => {
@@ -269,7 +269,7 @@ const crudStore = reactive({
       crudStore.isUpdate = true
       xModalOpt.title = "修改用户"
       // 赋值
-      xFormOpt.data.username = row.username
+      xFormOpt.data.account = row.account
     } else {
       crudStore.isUpdate = false
       xModalOpt.title = "新增用户"
@@ -317,7 +317,7 @@ const crudStore = reactive({
   },
   /** 删除 */
   onDelete: (row: RowMeta) => {
-    const tip = `确定 <strong style="color: var(--el-color-danger);"> 删除 </strong> 用户 <strong style="color: var(--el-color-primary);"> ${row.username} </strong> ？`
+    const tip = `确定 <strong style="color: var(--el-color-danger);"> 删除 </strong> 用户 <strong style="color: var(--el-color-primary);"> ${row.account} </strong> ？`
     const config: ElMessageBoxOptions = {
       type: "warning",
       showClose: true,

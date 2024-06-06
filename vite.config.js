@@ -6,11 +6,9 @@ import { createSvgIconsPlugin } from "vite-plugin-svg-icons"
 import svgLoader from "vite-svg-loader"
 export default ({ mode }) => {
   return {
-    /** 打包时根据实际情况修改 base */
     base: "",
     resolve: {
       alias: {
-        /** @ 符号指向 src 目录 */
         "@": resolve(__dirname, "./src")
       }
     },
@@ -27,11 +25,13 @@ export default ({ mode }) => {
       strictPort: false,
       /** 接口代理 */
       proxy: {
-        "/api/v1": {
-          target: "https://mock.mengxuegu.com/mock/63218b5fb4c53348ed2bc212",
+        "/api/": {
+          target: "http://back.rchang.cn",
           ws: true,
-          /** 是否允许跨域 */
-          changeOrigin: true
+          changeOrigin: true,
+          pathRewrite: {
+            "^/api": "/"
+          }
         }
       },
       /** 预热常用文件，提高初始页面加载速度 */
