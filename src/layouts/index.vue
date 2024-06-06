@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { setCssVariableValue } from "@/utils"
 import { watchEffect } from "vue"
-import LeftMode from "./LeftMode.vue"
+import Layout from "./Layout.vue"
 import useResize from "./hooks/useResize"
 
 useResize()
@@ -17,7 +17,7 @@ watchEffect(() => {
 
 <template>
   <div>
-    <LeftMode />
+    <Layout />
   </div>
 </template>
 
