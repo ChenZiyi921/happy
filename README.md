@@ -11,7 +11,7 @@ V3 Admin Vite is a free and open source middle and background management system 
 - Vue Cli 5.x: [v3-admin](https://github.com/un-pany/v3-admin)
 - Electron desktop: [v3-electron-vite](https://github.com/un-pany/v3-electron-vite)
 
-China repository: [Gitee](https://gitee.com/un-pany/v3-admin-vite)
+China repository: [Gitee](https://gitee.com/un-pany/happy_working_operation)
 
 ## 📚 Document
 
@@ -20,9 +20,9 @@ China repository: [Gitee](https://gitee.com/un-pany/v3-admin-vite)
 
 ## 📺 Online preview
 
-| Location     | account             | Link                                            |
-| ------------ | ------------------- | ----------------------------------------------- |
-| github-pages | `admin` or `editor` | [link](https://un-pany.github.io/v3-admin-vite) |
+| Location     | account             | Link                                                      |
+| ------------ | ------------------- | --------------------------------------------------------- |
+| github-pages | `admin` or `editor` | [link](https://un-pany.github.io/happy_working_operation) |
 
 ## ❤️ Generate electricity with love
 
@@ -69,10 +69,10 @@ China repository: [Gitee](https://gitee.com/un-pany/v3-admin-vite)
 3. pnpm version 8.x or latest
 
 # clone
-git clone https://github.com/un-pany/v3-admin-vite.git
+git clone https://github.com/un-pany/happy_working_operation.git
 
 # enter the project directory
-cd v3-admin-vite
+cd happy_working_operation
 
 # install dependencies
 pnpm i
@@ -137,8 +137,8 @@ pnpm test
 
 Thanks to all the contributors!
 
-<a href="https://github.com/un-pany/v3-admin-vite/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=un-pany/v3-admin-vite" />
+<a href="https://github.com/un-pany/happy_working_operation/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=un-pany/happy_working_operation" />
 </a>
 
 ## 💕 Thanks star
@@ -147,11 +147,11 @@ Small projects are not easy to get a star, if you like this project, welcome to 
 
 ## ☕ Donate
 
-[See how to donate](https://github.com/un-pany/v3-admin-vite/issues/69)
+[See how to donate](https://github.com/un-pany/happy_working_operation/issues/69)
 
 ## Group
 
-[See how to join a group chat](https://github.com/un-pany/v3-admin-vite/issues/191)
+[See how to join a group chat](https://github.com/un-pany/happy_working_operation/issues/191)
 
 ## 📄 License
 

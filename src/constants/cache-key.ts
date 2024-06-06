@@ -1,4 +1,4 @@
-const SYSTEM_NAME = "v3-admin-vite"
+const SYSTEM_NAME = "happy_working_operation"
 
 /** 缓存数据时用到的 Key */
 class CacheKey {

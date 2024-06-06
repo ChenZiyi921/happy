@@ -11,7 +11,7 @@ V3 Admin Vite 是一个免费开源的中后台管理系统基础解决方案，
 - Vue Cli 5.x 版: [v3-admin](https://github.com/un-pany/v3-admin)
 - Electron 桌面版: [v3-electron-vite](https://github.com/un-pany/v3-electron-vite)
 
-国内仓库：[Gitee](https://gitee.com/un-pany/v3-admin-vite)
+国内仓库：[Gitee](https://gitee.com/un-pany/happy_working_operation)
 
 ## 📚 文档
 
@@ -20,9 +20,9 @@ V3 Admin Vite 是一个免费开源的中后台管理系统基础解决方案，
 
 ## 📺 在线预览
 
-| 位置         | 账号            | 链接                                            |
-| ------------ | --------------- | ----------------------------------------------- |
-| github-pages | admin 或 editor | [链接](https://un-pany.github.io/v3-admin-vite) |
+| 位置         | 账号            | 链接                                                      |
+| ------------ | --------------- | --------------------------------------------------------- |
+| github-pages | admin 或 editor | [链接](https://un-pany.github.io/happy_working_operation) |
 
 ## ❤️ 用爱发电
 
@@ -69,10 +69,10 @@ V3 Admin Vite 是一个免费开源的中后台管理系统基础解决方案，
 3. pnpm 版本 8.x 或最新版
 
 # 克隆项目
-git clone https://github.com/un-pany/v3-admin-vite.git
+git clone https://github.com/un-pany/happy_working_operation.git
 
 # 进入项目目录
-cd v3-admin-vite
+cd happy_working_operation
 
 # 安装依赖
 pnpm i
@@ -137,8 +137,8 @@ pnpm test
 
 感谢所有的贡献者！
 
-<a href="https://github.com/un-pany/v3-admin-vite/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=un-pany/v3-admin-vite" />
+<a href="https://github.com/un-pany/happy_working_operation/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=un-pany/happy_working_operation" />
 </a>
 
 ## 💕 感谢 Star
@@ -147,11 +147,11 @@ pnpm test
 
 ## ☕ Donate
 
-[查看捐赠方式](https://github.com/un-pany/v3-admin-vite/issues/69)
+[查看捐赠方式](https://github.com/un-pany/happy_working_operation/issues/69)
 
 ## 可有可无的群
 
-[查看进群方式](https://github.com/un-pany/v3-admin-vite/issues/191)
+[查看进群方式](https://github.com/un-pany/happy_working_operation/issues/191)
 
 ## 📄 License
 
