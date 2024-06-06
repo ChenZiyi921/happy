@@ -1,20 +1,18 @@
 // core
-import { createApp } from "vue"
 import App from "@/App.vue"
-import store from "@/store"
 import router from "@/router"
 import "@/router/permission"
+import store from "@/store"
+import { createApp } from "vue"
 // load
-import { loadPlugins } from "@/plugins"
 import { loadDirectives } from "@/directives"
+import { loadPlugins } from "@/plugins"
 // css
-import "uno.css"
-import "normalize.css"
+import "@/styles/index.scss"
 import "element-plus/dist/index.css"
 import "element-plus/theme-chalk/dark/css-vars.css"
-import "vxe-table/lib/style.css"
-import "vxe-table-plugin-element/dist/style.css"
-import "@/styles/index.scss"
+import "normalize.css"
+import "uno.css"
 
 const app = createApp(App)
 

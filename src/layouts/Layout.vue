@@ -10,16 +10,13 @@ const appStore = useAppStore()
 const settingsStore = useSettingsStore()
 const { showTagsView, fixedHeader } = storeToRefs(settingsStore)
 
-/** 定义计算属性 layoutClasses，用于控制布局的类名 */
 const layoutClasses = computed(() => {
   return {
     hideSidebar: !appStore.sidebar.opened,
-    openSidebar: appStore.sidebar.opened,
-    withoutAnimation: appStore.sidebar.withoutAnimation
+    openSidebar: appStore.sidebar.opened
   }
 })
 
-/** 用于处理点击 mobile 端侧边栏遮罩层的事件 */
 const handleClickOutside = () => {
   appStore.closeSidebar(false)
 }
@@ -124,38 +121,6 @@ $transition-time: 0.35s;
   }
   .fixed-header {
     width: calc(100% - var(--v3-sidebar-hide-width));
-  }
-}
-
-// 适配 mobile 端
-.mobile {
-  .sidebar-container {
-    transition: transform $transition-time;
-    width: var(--v3-sidebar-width) !important;
-  }
-  .main-container {
-    margin-left: 0px;
-  }
-  .fixed-header {
-    width: 100%;
-  }
-  &.openSidebar {
-    position: fixed;
-    top: 0;
-  }
-  &.hideSidebar {
-    .sidebar-container {
-      pointer-events: none;
-      transition-duration: 0.3s;
-      transform: translate3d(calc(0px - var(--v3-sidebar-width)), 0, 0);
-    }
-  }
-}
-
-.withoutAnimation {
-  .sidebar-container,
-  .main-container {
-    transition: none;
   }
 }
 </style>
