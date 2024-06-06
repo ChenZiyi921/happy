@@ -1,6 +1,3 @@
-/// <reference types="vitest" />
-
-import { type ConfigEnv, type UserConfigExport, loadEnv } from "vite"
 import path, { resolve } from "path"
 import vue from "@vitejs/plugin-vue"
 import vueJsx from "@vitejs/plugin-vue-jsx"
@@ -8,13 +5,10 @@ import { createSvgIconsPlugin } from "vite-plugin-svg-icons"
 import svgLoader from "vite-svg-loader"
 import UnoCSS from "unocss/vite"
 
-/** 配置项文档：https://cn.vitejs.dev/config */
-export default ({ mode }: ConfigEnv): UserConfigExport => {
-  const viteEnv = loadEnv(mode, process.cwd()) as ImportMetaEnv
-  const { VITE_PUBLIC_PATH } = viteEnv
+export default ({ mode }) => {
   return {
     /** 打包时根据实际情况修改 base */
-    base: VITE_PUBLIC_PATH,
+    base: "",
     resolve: {
       alias: {
         /** @ 符号指向 src 目录 */
