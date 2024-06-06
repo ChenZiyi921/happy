@@ -6,19 +6,6 @@ const Layouts = () => import("@/layouts/index.vue")
 
 export const constantRoutes: RouteRecordRaw[] = [
   {
-    path: "/redirect",
-    component: Layouts,
-    meta: {
-      hidden: true
-    },
-    children: [
-      {
-        path: ":path(.*)",
-        component: () => import("@/views/redirect/index.vue")
-      }
-    ]
-  },
-  {
     path: "/404",
     component: () => import("@/views/error-page/404.vue"),
     meta: {
@@ -68,39 +55,7 @@ export const constantRoutes: RouteRecordRaw[] = [
   }
 ]
 
-export const dynamicRoutes: RouteRecordRaw[] = [
-  {
-    path: "/permission",
-    component: Layouts,
-    redirect: "/permission/page",
-    name: "Permission",
-    meta: {
-      title: "权限",
-      svgIcon: "lock",
-      roles: ["admin", "editor"], // 可以在根路由中设置角色
-      alwaysShow: true // 将始终显示根菜单
-    },
-    children: [
-      {
-        path: "page",
-        component: () => import("@/views/permission/page.vue"),
-        name: "PagePermission",
-        meta: {
-          title: "页面级",
-          roles: ["admin"] // 或者在子导航中设置角色
-        }
-      },
-      {
-        path: "directive",
-        component: () => import("@/views/permission/directive.vue"),
-        name: "DirectivePermission",
-        meta: {
-          title: "按钮级" // 如果未设置角色，则表示：该页面不需要权限，但会继承根路由的角色
-        }
-      }
-    ]
-  }
-]
+export const dynamicRoutes: RouteRecordRaw[] = []
 
 const router = createRouter({
   history,
