@@ -1,14 +1,13 @@
 <script lang="ts" setup>
-import { computed } from "vue"
-import { useRoute } from "vue-router"
+import { useLayoutMode } from "@/hooks/useLayoutMode"
 import { useAppStore } from "@/store/modules/app"
 import { usePermissionStore } from "@/store/modules/permission"
 import { useSettingsStore } from "@/store/modules/settings"
-import SidebarItem from "./SidebarItem.vue"
+import { getCssVariableValue } from "@/utils/index.js"
+import { computed } from "vue"
+import { useRoute } from "vue-router"
 import Logo from "../Logo/index.vue"
-import { useDevice } from "@/hooks/useDevice"
-import { useLayoutMode } from "@/hooks/useLayoutMode"
-import { getCssVariableValue } from "@/utils"
+import SidebarItem from "./SidebarItem.vue"
 
 const v3SidebarMenuBgColor = getCssVariableValue("--v3-sidebar-menu-bg-color")
 const v3SidebarMenuTextColor = getCssVariableValue("--v3-sidebar-menu-text-color")
@@ -60,7 +59,7 @@ const hiddenScrollbarVerticalBar = computed(() => {
         :active-text-color="activeTextColor"
         :unique-opened="true"
         :collapse-transition="false"
-        :mode="isTop  ? 'horizontal' : 'vertical'"
+        :mode="isTop ? 'horizontal' : 'vertical'"
       >
         <SidebarItem v-for="route in noHiddenRoutes" :key="route.path" :item="route" :base-path="route.path" />
       </el-menu>

@@ -1,5 +1,5 @@
 <script setup>
-import { setCssVariableValue } from "@/utils"
+import { setCssVariableValue } from "@/utils/index.js"
 import { watchEffect } from "vue"
 import Layout from "./Layout.vue"
 
