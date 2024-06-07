@@ -32,8 +32,11 @@ const tagsViewStore = useTagsViewStore()
   @extend %scrollbar;
   display: flex;
   flex-direction: column;
+  margin: 10px;
+  background: #fff;
   .app-container-grow {
     flex-grow: 1;
+    padding: 10px;
   }
 }
 </style>
