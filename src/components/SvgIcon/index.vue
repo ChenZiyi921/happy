@@ -1,12 +1,7 @@
-<script lang="ts" setup>
+<script setup>
 import { computed } from "vue"
 
-interface Props {
-  prefix?: string
-  name: string
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps(), {
   prefix: "icon"
 })
 

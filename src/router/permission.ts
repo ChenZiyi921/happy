@@ -1,5 +1,5 @@
 import routeSettings from "@/config/route"
-import isWhiteList from "@/config/white-list"
+import isWhiteList from "@/config/white-list.js"
 import { setRouteChange } from "@/hooks/useRouteListener"
 import { useTitle } from "@/hooks/useTitle"
 import router from "@/router"
