@@ -1,24 +1,20 @@
 <script lang="ts" setup>
 import { useUserStore } from "@/store/modules/user"
-import { Lock, User } from "@element-plus/icons-vue"
 import { reactive, ref } from "vue"
 import { useRouter } from "vue-router"
 
 const router = useRouter()
 
-/** 登录表单元素的引用 */
 const loginFormRef = ref(null)
-
-/** 登录按钮 Loading */
 const loading = ref(false)
+const active = ref(1)
 
-/** 登录表单数据 */
 const loginFormData = reactive({
   account: "",
   password: "",
   code: ""
 })
-/** 登录表单校验规则 */
+
 const loginFormRules = {
   account: [{ required: true, message: "请输入用户名", trigger: "blur" }],
   password: [
@@ -26,7 +22,11 @@ const loginFormRules = {
     { min: 6, message: "长度6个字符", trigger: "blur" }
   ]
 }
-/** 登录逻辑 */
+
+const tabChange = (index) => {
+  active.value = index
+}
+
 const handleLogin = () => {
   loginFormRef.value?.validate((valid: boolean, fields) => {
     if (valid) {
@@ -53,29 +53,32 @@ const handleLogin = () => {
   <div class="login-container">
     <div class="login-card">
       <div class="content">
+        <div class="logo"><img src="@/assets/login/logo.png" alt="" /></div>
+        <div class="tabs">
+          <span :class="{ active: active === 1 }" @click="tabChange(1)">密码登录</span>
+          <span :class="{ active: active === 2 }" @click="tabChange(2)">短信登录</span>
+        </div>
         <el-form ref="loginFormRef" :model="loginFormData" :rules="loginFormRules" @keyup.enter="handleLogin">
           <el-form-item prop="account">
             <el-input
               v-model.trim="loginFormData.account"
-              placeholder="用户名"
+              placeholder="请输入您的手机号"
               type="text"
               tabindex="1"
-              :prefix-icon="User"
               size="large"
             />
           </el-form-item>
           <el-form-item prop="password">
             <el-input
               v-model.trim="loginFormData.password"
-              placeholder="密码"
+              placeholder="请输入您的登陆密码"
               type="password"
               tabindex="2"
-              :prefix-icon="Lock"
               size="large"
               show-password
             />
           </el-form-item>
-          <el-button :loading="loading" type="primary" size="large" @click.prevent="handleLogin">登 录</el-button>
+          <button class="submit" v-loading="loading" @click.prevent="handleLogin">登 录</button>
         </el-form>
       </div>
     </div>
@@ -87,9 +90,11 @@ const handleLogin = () => {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   width: 100%;
   min-height: 100%;
+  background: #fff url("@/assets/login/bg.png") left center no-repeat;
+  background-size: 60%;
   .theme-switch {
     position: fixed;
     top: 5%;
@@ -97,12 +102,10 @@ const handleLogin = () => {
     cursor: pointer;
   }
   .login-card {
-    width: 480px;
-    max-width: 90%;
-    border-radius: 20px;
-    box-shadow: 0 0 10px #dcdfe6;
-    background-color: var(--el-bg-color);
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
     .title {
       display: flex;
       justify-content: center;
@@ -113,7 +116,44 @@ const handleLogin = () => {
       }
     }
     .content {
-      padding: 20px 50px 50px 50px;
+      width: 390px;
+      margin-right: 40px;
+      .logo {
+        width: 68%;
+        margin: auto;
+      }
+      .tabs {
+        display: flex;
+        padding: 50px 0;
+        justify-content: space-evenly;
+        span {
+          // font-weight: bold;
+          font-size: 20px;
+          color: #333;
+          padding-bottom: 6px;
+          cursor: pointer;
+        }
+        span.active {
+          border-bottom: 3px solid #ff7e16;
+        }
+      }
+      .el-form-item {
+        margin-bottom: 24px;
+      }
+      .el-input {
+        height: 60px;
+        margin-bottom: 6px;
+      }
+      .submit {
+        width: 100%;
+        height: 60px;
+        line-height: 60px;
+        margin-top: 10px;
+        font-size: 22px;
+        color: #fff;
+        border: none;
+        background: url("@/assets/login/submit.png");
+      }
       :deep(.el-input-group__append) {
         padding: 0;
         overflow: hidden;
