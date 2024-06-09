@@ -1,9 +1,8 @@
 <script setup>
 import { departmentCascade } from "@/api/dict"
 import { departmentUserList } from "@/api/user"
-
 import { ElMessage } from "element-plus"
-import { reactive, ref } from "vue"
+import { onMounted, reactive, ref } from "vue"
 
 const defaultProps = {
   children: "children",
@@ -12,9 +11,15 @@ const defaultProps = {
 
 const data = ref([])
 const multipleSelection = ref([])
+const currentPage = ref(4)
+const pageSize = ref(100)
 const user = reactive({
   list: [],
   pageinfo: {}
+})
+
+onMounted(() => {
+  getDepartmentUserList()
 })
 
 departmentCascade({ only_department: 1 }).then((res) => {
@@ -26,7 +31,7 @@ departmentCascade({ only_department: 1 }).then((res) => {
 })
 
 const getDepartmentUserList = (data) => {
-  departmentUserList({ department_id: data.id, keywords: "", page: 1, size: 10 }).then((res) => {
+  departmentUserList({ department_id: data?.id || "", keywords: "", page: 1, size: 10 }).then((res) => {
     user.list = res.data.list
     user.pageinfo = res.data.pageinfo
   })
@@ -34,6 +39,14 @@ const getDepartmentUserList = (data) => {
 
 const handleSelectionChange = (val) => {
   multipleSelection.value = val
+}
+
+const handleSizeChange = (val) => {
+  console.log(`${val} items per page`)
+}
+
+const handleCurrentChange = (val) => {
+  console.log(`current page: ${val}`)
 }
 </script>
 
@@ -62,6 +75,7 @@ const handleSelectionChange = (val) => {
         </template>
       </el-tree>
     </div>
+    <!-- <div> -->
     <el-table
       :data="user.list"
       style="width: 100%; margin-left: 14px"
@@ -84,6 +98,16 @@ const handleSelectionChange = (val) => {
         </template>
       </el-table-column>
     </el-table>
+    <!-- <el-pagination
+      v-model:current-page="currentPage"
+      v-model:page-size="pageSize"
+      :page-sizes="[100, 200, 300, 400]"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="400"
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+    /> -->
+    <!-- </div> -->
   </div>
 </template>
 <style lang="less" scoped>

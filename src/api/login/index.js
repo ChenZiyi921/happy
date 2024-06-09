@@ -1,4 +1,4 @@
-import { request } from "@/utils/service"
+import { request } from "@/utils/service.js"
 
 export function loginApi(data) {
   return request({
