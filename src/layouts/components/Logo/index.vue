@@ -1,5 +1,5 @@
-<script lang="ts" setup>
-import logo from "@/assets/layouts/logo.png?url"
+<script setup>
+import logo from "@/assets/logo.png?url"
 
 const props = withDefaults(defineProps(), {
   collapse: true
