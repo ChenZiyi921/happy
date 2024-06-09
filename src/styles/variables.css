@@ -1,13 +1,8 @@
-/** 全局 CSS 变量，这种变量不仅可以在 CSS 和 SCSS 中使用，还可以导入到 JS 中使用 */
-
 :root {
-  /** Body */
   --v3-body-text-color: var(--el-text-color-primary);
   --v3-body-bg-color: var(--el-bg-color-page);
-  /** Header 区域 = NavigationBar 组件 + TagsView 组件 */
-  --v3-header-height: calc(
-    var(--v3-navigationbar-height) + var(--v3-tagsview-height) + var(--v3-header-border-bottom-width)
-  );
+
+  --v3-header-height: 80px;
   --v3-header-bg-color: var(--el-bg-color);
   --v3-header-box-shadow: var(--el-box-shadow-lighter);
   --v3-header-border-bottom-width: 1px;

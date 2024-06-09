@@ -1,5 +1,6 @@
 <script setup>
 import logo from "@/assets/logo.png?url"
+import { getSidebarStatus } from "@/utils/cache/local-storage"
 
 const props = withDefaults(defineProps(), {
   collapse: true
@@ -7,15 +8,8 @@ const props = withDefaults(defineProps(), {
 </script>
 
 <template>
-  <div class="layout-logo-container" :class="{ collapse: props.collapse }">
-    <transition name="layout-logo-fade">
-      <router-link v-if="props.collapse" key="collapse" to="/">
-        <img :src="logo" class="layout-logo" />
-      </router-link>
-      <router-link v-else key="expand" to="/">
-        <img :src="logo" class="layout-logo-text" />
-      </router-link>
-    </transition>
+  <div class="layout-logo-container">
+    <img :src="logo" class="layout-logo" :style="{ width: getSidebarStatus() === 'opened' ? '50px' : '32px' }" />
   </div>
 </template>
 
@@ -28,28 +22,8 @@ const props = withDefaults(defineProps(), {
   text-align: center;
   overflow: hidden;
   .layout-logo {
-    display: none;
-  }
-  .layout-logo-text {
-    height: 100%;
+    width: 50px;
     vertical-align: middle;
-  }
-}
-
-.layout-mode-top {
-  height: var(--v3-navigationbar-height);
-  line-height: var(--v3-navigationbar-height);
-}
-
-.collapse {
-  .layout-logo {
-    width: 32px;
-    height: 32px;
-    vertical-align: middle;
-    display: inline-block;
-  }
-  .layout-logo-text {
-    display: none;
   }
 }
 </style>
