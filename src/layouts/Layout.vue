@@ -1,5 +1,4 @@
 <script setup>
-import { useDevice } from "@/hooks/useDevice"
 import { useAppStore } from "@/store/modules/app"
 import { useSettingsStore } from "@/store/modules/settings"
 import { storeToRefs } from "pinia"
