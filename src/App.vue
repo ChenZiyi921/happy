@@ -1,11 +1,6 @@
-<script lang="ts" setup>
-import { useTheme } from "@/hooks/useTheme"
+<script setup>
 import { ElNotification } from "element-plus"
 import zhCn from "element-plus/es/locale/lang/zh-cn"
-
-const { initTheme } = useTheme()
-
-initTheme()
 </script>
 
 <template>

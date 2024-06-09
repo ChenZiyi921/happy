@@ -1,6 +1,5 @@
 import { type SidebarClosed, type SidebarOpened } from "@/constants/app-key"
 import CacheKey from "@/constants/cache-key"
-import { type ThemeName } from "@/hooks/useTheme"
 import { type TagView } from "@/store/modules/tags-view"
 
 //#region 系统布局配置
@@ -22,15 +21,6 @@ export const getSidebarStatus = () => {
 }
 export const setSidebarStatus = (sidebarStatus: SidebarOpened | SidebarClosed) => {
   localStorage.setItem(CacheKey.SIDEBAR_STATUS, sidebarStatus)
-}
-//#endregion
-
-//#region 正在应用的主题名称
-export const getActiveThemeName = () => {
-  return localStorage.getItem(CacheKey.ACTIVE_THEME_NAME) as ThemeName | null
-}
-export const setActiveThemeName = (themeName: ThemeName) => {
-  localStorage.setItem(CacheKey.ACTIVE_THEME_NAME, themeName)
 }
 //#endregion
 

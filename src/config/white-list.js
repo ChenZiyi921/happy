@@ -1,3 +1,5 @@
+const whiteListByPath = ["/login"]
+
 const isWhiteList = (to) => {
   return whiteListByPath.indexOf(to.path) !== -1
 }
