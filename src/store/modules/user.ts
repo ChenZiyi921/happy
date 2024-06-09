@@ -1,5 +1,4 @@
-import { loginApi } from "@/api/login"
-import { type LoginRequestData } from "@/api/login/types/login"
+import { loginApi } from "@/api/login/index.js"
 import { resetRouter } from "@/router"
 import store from "@/store"
 import { getToken, removeToken, setToken } from "@/utils/cache/cookies"
@@ -17,7 +16,7 @@ export const useUserStore = defineStore("user", () => {
   const settingsStore = useSettingsStore()
 
   /** 登录 */
-  const login = async ({ account, password, code }: LoginRequestData) => {
+  const login = async ({ account, password, code }) => {
     const { data } = await loginApi({ account, password, code })
     setToken(data.token)
     token.value = data.token
