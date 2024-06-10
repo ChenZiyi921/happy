@@ -2,7 +2,6 @@
 import { useLayoutMode } from "@/hooks/useLayoutMode"
 import { useAppStore } from "@/store/modules/app"
 import { usePermissionStore } from "@/store/modules/permission"
-import { useSettingsStore } from "@/store/modules/settings"
 import { getCssVariableValue } from "@/utils/index.js"
 import { computed } from "vue"
 import { useRoute } from "vue-router"
@@ -17,7 +16,6 @@ const { isLeft, isTop } = useLayoutMode()
 const route = useRoute()
 const appStore = useAppStore()
 const permissionStore = usePermissionStore()
-const settingsStore = useSettingsStore()
 
 const activeMenu = computed(() => {
   const {
@@ -52,7 +50,6 @@ const tipLineWidth = computed(() => {
         :background-color="backgroundColor"
         :text-color="textColor"
         :active-text-color="activeTextColor"
-        :unique-opened="true"
         :collapse-transition="false"
         :mode="'vertical'"
       >
@@ -108,16 +105,18 @@ const tipLineWidth = computed(() => {
 .el-menu--horizontal {
   height: v-bind(sidebarMenuItemHeight);
 }
-
+:deep(.el-sub-menu__title) {
+  padding: 6px 0;
+  box-sizing: content-box;
+}
 :deep(.el-menu-item),
 :deep(.el-sub-menu__title),
 :deep(.el-sub-menu .el-menu-item),
 :deep(.el-menu--horizontal .el-menu-item) {
-  height: v-bind(sidebarMenuItemHeight);
-  line-height: v-bind(sidebarMenuItemHeight);
-  &.is-active,
-  &:hover {
-    background-color: v-bind(sidebarMenuHoverBgColor);
+  height: 40px;
+  line-height: 40px;
+  &.is-active {
+    background-color: #ff7e16;
   }
 }
 

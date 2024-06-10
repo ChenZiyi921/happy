@@ -1,12 +1,10 @@
-<script lang="ts" setup>
-import { useLayoutMode } from "@/hooks/useLayoutMode"
+<script  setup>
 import { useAppStore } from "@/store/modules/app"
 import { useUserStore } from "@/store/modules/user"
 import { UserFilled } from "@element-plus/icons-vue"
 import { useRouter } from "vue-router"
 import Hamburger from "../Hamburger/index.vue"
 
-const { isTop } = useLayoutMode()
 const router = useRouter()
 const appStore = useAppStore()
 const userStore = useUserStore()

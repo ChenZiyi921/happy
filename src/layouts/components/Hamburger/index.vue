@@ -9,7 +9,6 @@ const props = withDefaults(defineProps<Props>(), {
   isActive: false
 })
 
-/** Vue 3.3+ defineEmits 语法 */
 const emit = defineEmits<{
   toggleClick: []
 }>()
@@ -20,11 +19,12 @@ const toggleClick = () => {
 </script>
 
 <template>
-  <div @click="toggleClick">
-    <el-icon :size="20" class="icon">
+  <div>
+    <el-icon :size="20" class="icon" @click="toggleClick">
       <Fold v-if="props.isActive" />
       <Expand v-else />
     </el-icon>
+    <span style="padding-left: 10px; font-weight: bold">快乐上工</span>
   </div>
 </template>
 
