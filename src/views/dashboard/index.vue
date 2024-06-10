@@ -106,7 +106,7 @@ const handleCurrentChange = (page) => {
         :data="user.list"
         style="width: 100%"
         @selection-change="handleSelectionChange"
-        :header-cell-style="{ backgroundColor: '#f7f7f7' }"
+        :header-cell-style="{ backgroundColor: '#F5E9D0' }"
       >
         <el-table-column type="selection" width="55" />
         <el-table-column prop="username" label="姓名" min-width="100" />

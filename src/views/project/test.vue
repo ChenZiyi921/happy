@@ -52,7 +52,7 @@ const handleCurrentChange = (page) => {
       <el-table
         :data="user.list"
         style="width: 100%"
-        :header-cell-style="{ backgroundColor: '#f7f7f7' }"
+        :header-cell-style="{ backgroundColor: '#F5E9D0' }"
         default-expand-all
       >
         <el-table-column type="selection" width="55" />
