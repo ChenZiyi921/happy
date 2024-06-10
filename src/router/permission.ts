@@ -4,7 +4,7 @@ import { setRouteChange } from "@/hooks/useRouteListener"
 import { useTitle } from "@/hooks/useTitle"
 import router from "@/router/index.js"
 import { usePermissionStoreHook } from "@/store/modules/permission"
-import { useUserStoreHook } from "@/store/modules/user"
+import { useUserStoreHook } from "@/store/modules/user.js"
 import { getToken } from "@/utils/cache/cookies"
 
 const { setTitle } = useTitle()

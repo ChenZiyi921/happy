@@ -1,5 +1,5 @@
 <script setup>
-import { useUserStore } from "@/store/modules/user"
+import { useUserStore } from "@/store/modules/user.js"
 import { reactive, ref } from "vue"
 import { useRouter } from "vue-router"
 

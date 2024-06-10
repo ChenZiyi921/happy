@@ -1,4 +1,4 @@
-import { useUserStoreHook } from "@/store/modules/user"
+import { useUserStoreHook } from "@/store/modules/user.js"
 import axios from "axios"
 import { ElMessage } from "element-plus"
 import { merge } from "lodash-es"

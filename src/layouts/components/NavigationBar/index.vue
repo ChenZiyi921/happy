@@ -1,6 +1,6 @@
-<script  setup>
+<script setup>
 import { useAppStore } from "@/store/modules/app"
-import { useUserStore } from "@/store/modules/user"
+import { useUserStore } from "@/store/modules/user.js"
 import { UserFilled } from "@element-plus/icons-vue"
 import { useRouter } from "vue-router"
 import Hamburger from "../Hamburger/index.vue"
@@ -25,7 +25,7 @@ const logout = () => {
     <div class="right-menu">
       <el-dropdown class="right-menu-item">
         <div class="right-menu-avatar">
-          <el-avatar :icon="UserFilled" :size="30" />
+          欢迎使用：
           <span>{{ userStore.account }}</span>
         </div>
         <template #dropdown>

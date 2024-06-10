@@ -60,18 +60,6 @@ const tipLineWidth = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-%tip-line {
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: v-bind(tipLineWidth);
-    height: 100%;
-    background-color: var(--v3-sidebar-menu-tip-line-bg-color);
-  }
-}
-
 .has-logo {
   .el-scrollbar {
     height: calc(101% - var(--v3-header-height));
@@ -124,18 +112,6 @@ const tipLineWidth = computed(() => {
   &.is-active {
     > .el-sub-menu__title {
       color: v-bind(activeTextColor) !important;
-    }
-  }
-}
-
-:deep(.el-menu-item.is-active) {
-  @extend %tip-line;
-}
-
-.el-menu--collapse {
-  :deep(.el-sub-menu.is-active) {
-    .el-sub-menu__title {
-      @extend %tip-line;
     }
   }
 }
