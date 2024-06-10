@@ -1,12 +1,15 @@
 <script setup>
 import { reactive, ref } from "vue"
+import { ElMessage } from "element-plus"
+import { uploadImage } from "@/api/index.js"
 
 const props = defineProps({})
-
+const upload = ref()
 const title = ref("")
 const dialogTableVisible = ref(false)
 const dialogFormVisible = ref(false)
 const formLabelWidth = "100px"
+const fileList = ref([])
 
 const form = reactive({
   name: "",
@@ -16,12 +19,50 @@ const form = reactive({
   delivery: false,
   type: [],
   resource: "",
-  desc: ""
+  desc: "",
+  img_src: ""
 })
 
 const setVisible = (visible, t) => {
   title.value = t
   dialogFormVisible.value = visible
+}
+
+const onBeforeUploadImage = (file) => {
+  const is1M = file.size / 1024 / 1024 < 1
+  if (!is1M) {
+    ElMessage.error("上传文件大小不能超过 1MB!")
+  }
+  return is1M
+}
+
+const fileChange = (file) => {
+  fileList.value = [{ name: file.name, url: file.url }]
+}
+
+const handleExceed = (files) => {
+  upload.value?.clearFiles()
+  const file = files[0]
+  file.uid = genFileId()
+  upload.value?.handleStart(file)
+}
+
+const uploadFile = (param) => {
+  let formData = new FormData()
+  uploadImage({ file: param.file, module: 3 }).then((res) => {
+    if (res.code_status == 0) {
+      form.img_src = res.data[0].image_url
+      ElMessage({
+        type: "success",
+        message: res.msg
+      })
+    } else {
+      ElMessage({
+        type: "error",
+        message: res.msg
+      })
+    }
+  })
 }
 
 defineExpose({ setVisible })
@@ -50,6 +91,25 @@ defineExpose({ setVisible })
           <el-radio :value="1" size="large">禁用</el-radio>
           <el-radio :value="2" size="large">启用</el-radio>
         </el-radio-group>
+      </el-form-item>
+      <el-form-item label="上传图片" :label-width="formLabelWidth">
+        <el-upload
+          ref="upload"
+          v-model:file-list="fileList"
+          :limit="1"
+          :on-exceed="handleExceed"
+          :http-request="uploadFile"
+          :on-change="fileChange"
+          :before-upload="onBeforeUploadImage"
+          accept="image/jpeg,image/png,image/jpg"
+        >
+          <el-button size="small" style="border: 0; border: 1px solid #f09b22; background: #fff; color: #f09b22"
+            >点击上传</el-button
+          >
+          <template #tip>
+            <div>只能上传jpg/png文件，大小为16*16，且不超过50kb</div>
+          </template>
+        </el-upload>
       </el-form-item>
     </el-form>
     <template #footer>

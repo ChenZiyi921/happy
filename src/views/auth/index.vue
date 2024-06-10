@@ -82,7 +82,7 @@ const deleteBefore = (row) => {
         <el-table-column prop="department_name" label="部门" min-width="140" />
         <el-table-column prop="account" label="账号" min-width="120" />
         <el-table-column prop="status" label="状态" min-width="80" />
-        <el-table-column prop="address" label="操作" min-width="120" fixed="right">
+        <el-table-column prop="address" label="操作" min-width="130" fixed="right">
           <template #default="{ row }">
             <span class="operation" @click="updateAuth(row)">修改</span>
             <span class="operation" @click="deleteBefore(row)">删除</span>
