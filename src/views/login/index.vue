@@ -112,9 +112,36 @@ const handleLogin = () => {
         </div>
       </div>
     </div>
+    <div class="footer">
+      <span>网站备案：京ICP备xxxxxxxxxxxxxxx</span>
+      <span class="line"></span>
+      <span>版权所有：北京如常控股集团有限公司</span>
+    </div>
   </div>
 </template>
 
 <style lang="less" scoped>
 @import url("./index.less");
+.footer {
+  position: absolute;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  color: #999;
+  .line {
+    display: inline-block;
+    margin: 0 20px;
+    width: 1px;
+    height: 14px;
+    opacity: 0.5;
+    background: #999999;
+    border-radius: 1px;
+  }
+}
 </style>
