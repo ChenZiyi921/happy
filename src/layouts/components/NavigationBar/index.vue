@@ -1,5 +1,5 @@
 <script setup>
-import { useAppStore } from "@/store/modules/app"
+import { useAppStore } from "@/store/modules/app.js"
 import { useUserStore } from "@/store/modules/user.js"
 import { UserFilled } from "@element-plus/icons-vue"
 import { useRouter } from "vue-router"

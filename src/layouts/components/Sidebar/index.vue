@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useAppStore } from "@/store/modules/app"
+import { useAppStore } from "@/store/modules/app.js"
 import { usePermissionStore } from "@/store/modules/permission"
 import { getCssVariableValue } from "@/utils/index.js"
 import { computed } from "vue"

@@ -1,6 +1,5 @@
 const SYSTEM_NAME = "happy_working_operation"
 
-/** 缓存数据时用到的 Key */
 class CacheKey {
   static readonly TOKEN = `${SYSTEM_NAME}-token-key`
   static readonly CONFIG_LAYOUT = `${SYSTEM_NAME}-config-layout-key`

@@ -1,5 +1,5 @@
 <script setup>
-import { useAppStore } from "@/store/modules/app"
+import { useAppStore } from "@/store/modules/app.js"
 import { useSettingsStore } from "@/store/modules/settings"
 import { storeToRefs } from "pinia"
 import { computed } from "vue"

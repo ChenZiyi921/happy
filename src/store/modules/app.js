@@ -3,7 +3,7 @@ import { getSidebarStatus, setSidebarStatus } from "@/utils/cache/local-storage"
 import { defineStore } from "pinia"
 import { reactive, ref, watch } from "vue"
 
-function handleSidebarStatus(opened: boolean) {
+function handleSidebarStatus(opened) {
   opened ? setSidebarStatus(SIDEBAR_OPENED) : setSidebarStatus(SIDEBAR_CLOSED)
 }
 
@@ -20,12 +20,12 @@ export const useAppStore = defineStore("app", () => {
     (opened) => handleSidebarStatus(opened)
   )
 
-  const toggleSidebar = (withoutAnimation: boolean) => {
+  const toggleSidebar = (withoutAnimation) => {
     sidebar.opened = !sidebar.opened
     sidebar.withoutAnimation = withoutAnimation
   }
 
-  const closeSidebar = (withoutAnimation: boolean) => {
+  const closeSidebar = (withoutAnimation) => {
     sidebar.opened = false
     sidebar.withoutAnimation = withoutAnimation
   }
