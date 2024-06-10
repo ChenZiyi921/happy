@@ -1,7 +1,7 @@
 import routeSettings from "@/config/route"
 import { flatMultiLevelRoutes } from "@/router/helper"
 import { constantRoutes, dynamicRoutes } from "@/router/index.js"
-import store from "@/store"
+import store from "@/store/index.js"
 import { defineStore } from "pinia"
 import { ref } from "vue"
 import { type RouteRecordRaw } from "vue-router"

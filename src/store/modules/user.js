@@ -1,6 +1,6 @@
 import { loginApi } from "@/api/login/index.js"
 import { resetRouter } from "@/router/index.js"
-import store from "@/store"
+import store from "@/store/index.js"
 import { getToken, removeToken, setToken } from "@/utils/cache/cookies"
 import { defineStore } from "pinia"
 import { ref } from "vue"

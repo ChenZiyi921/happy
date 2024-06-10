@@ -1,7 +1,7 @@
 import App from "@/App.vue"
 import router from "@/router/index.js"
 import "@/router/permission"
-import store from "@/store"
+import store from "@/store/index.js"
 import { createApp } from "vue"
 
 import { loadDirectives } from "@/directives"

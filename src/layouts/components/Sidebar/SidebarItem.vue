@@ -2,7 +2,7 @@
 import { computed } from "vue"
 import { type RouteRecordRaw } from "vue-router"
 import SidebarItemLink from "./SidebarItemLink.vue"
-import { isExternal } from "@/utils/validate"
+import { isExternal } from "@/utils/validate.js"
 import path from "path-browserify"
 
 interface Props {
@@ -14,20 +14,16 @@ const props = withDefaults(defineProps<Props>(), {
   basePath: ""
 })
 
-/** 是否始终显示根菜单 */
 const alwaysShowRootMenu = computed(() => props.item.meta?.alwaysShow)
 
-/** 显示的子菜单 */
 const showingChildren = computed(() => {
   return props.item.children?.filter((child) => !child.meta?.hidden) ?? []
 })
 
-/** 显示的子菜单数量 */
 const showingChildNumber = computed(() => {
   return showingChildren.value.length
 })
 
-/** 唯一的子菜单项 */
 const theOnlyOneChild = computed(() => {
   const number = showingChildNumber.value
   switch (true) {
@@ -40,7 +36,6 @@ const theOnlyOneChild = computed(() => {
   }
 })
 
-/** 解析路径 */
 const resolvePath = (routePath: string) => {
   switch (true) {
     case isExternal(routePath):
