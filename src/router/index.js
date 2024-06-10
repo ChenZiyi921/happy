@@ -37,7 +37,7 @@ export const dynamicRoutes = [
     children: [
       {
         path: "department",
-        component: () => import("@/views/organization/dashboard/index.vue"),
+        component: () => import("@/views/organization/department/index.vue"),
         name: "department",
         meta: {
           title: "部门员工"
@@ -45,7 +45,7 @@ export const dynamicRoutes = [
       },
       {
         path: "role",
-        component: () => import("@/views/organization/dashboard/index.vue"),
+        component: () => import("@/views/organization/department/index.vue"),
         name: "role",
         meta: {
           title: "角色管理"
