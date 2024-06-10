@@ -1,6 +1,6 @@
 <script setup>
 import { useAppStore } from "@/store/modules/app.js"
-import { useSettingsStore } from "@/store/modules/settings"
+import { useSettingsStore } from "@/store/modules/settings.js"
 import { storeToRefs } from "pinia"
 import { computed } from "vue"
 import { AppMain, NavigationBar, Sidebar } from "./components/index.js"

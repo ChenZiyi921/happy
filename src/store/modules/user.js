@@ -4,15 +4,13 @@ import store from "@/store"
 import { getToken, removeToken, setToken } from "@/utils/cache/cookies"
 import { defineStore } from "pinia"
 import { ref } from "vue"
-import { useSettingsStore } from "./settings"
-import { useTagsViewStore } from "./tags-view"
+import { useSettingsStore } from "./settings.js"
 
 export const useUserStore = defineStore("user", () => {
   const token = ref(getToken() || "")
   const roles = ref([])
   const account = ref("")
 
-  const tagsViewStore = useTagsViewStore()
   const settingsStore = useSettingsStore()
 
   const login = async ({ account, password, code }) => {
@@ -38,20 +36,12 @@ export const useUserStore = defineStore("user", () => {
     token.value = ""
     roles.value = []
     resetRouter()
-    _resetTagsView()
   }
 
   const resetToken = () => {
     removeToken()
     token.value = ""
     roles.value = []
-  }
-
-  const _resetTagsView = () => {
-    if (!settingsStore.cacheTagsView) {
-      tagsViewStore.delAllVisitedViews()
-      tagsViewStore.delAllCachedViews()
-    }
   }
 
   return { token, roles, account, login, getInfo, changeRoles, logout, resetToken }

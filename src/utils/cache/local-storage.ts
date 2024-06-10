@@ -1,6 +1,5 @@
 import { type SidebarClosed, type SidebarOpened } from "@/constants/app-key"
 import CacheKey from "@/constants/cache-key"
-import { type TagView } from "@/store/modules/tags-view"
 
 //#region 系统布局配置
 export const getConfigLayout = () => {
@@ -27,9 +26,9 @@ export const setSidebarStatus = (sidebarStatus: SidebarOpened | SidebarClosed) =
 //#region 标签栏
 export const getVisitedViews = () => {
   const json = localStorage.getItem(CacheKey.VISITED_VIEWS)
-  return JSON.parse(json ?? "[]") as TagView[]
+  return JSON.parse(json ?? "[]")
 }
-export const setVisitedViews = (views: TagView[]) => {
+export const setVisitedViews = (views) => {
   views.forEach((view) => {
     // 删除不必要的属性，防止 JSON.stringify 处理到循环引用
     delete view.matched

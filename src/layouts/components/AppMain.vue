@@ -1,15 +1,11 @@
-<script lang="ts" setup>
-import { useTagsViewStore } from "@/store/modules/tags-view"
-
-const tagsViewStore = useTagsViewStore()
-</script>
+<script lang="ts" setup></script>
 
 <template>
   <section class="app-main">
     <div class="app-scrollbar">
       <router-view v-slot="{ Component, route }">
         <transition name="el-fade-in" mode="out-in">
-          <keep-alive :include="tagsViewStore.cachedViews">
+          <keep-alive :include="[]">
             <component :is="Component" :key="route.path" class="app-container-grow" />
           </keep-alive>
         </transition>
