@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { useLayoutMode } from "@/hooks/useLayoutMode"
 import { useAppStore } from "@/store/modules/app"
 import { usePermissionStore } from "@/store/modules/permission"
 import { getCssVariableValue } from "@/utils/index.js"
@@ -12,7 +11,6 @@ const v3SidebarMenuBgColor = getCssVariableValue("--v3-sidebar-menu-bg-color")
 const v3SidebarMenuTextColor = getCssVariableValue("--v3-sidebar-menu-text-color")
 const v3SidebarMenuActiveTextColor = getCssVariableValue("--v3-sidebar-menu-active-text-color")
 
-const { isLeft, isTop } = useLayoutMode()
 const route = useRoute()
 const appStore = useAppStore()
 const permissionStore = usePermissionStore()
@@ -26,17 +24,17 @@ const activeMenu = computed(() => {
 })
 const noHiddenRoutes = computed(() => permissionStore.routes.filter((item) => !item.meta?.hidden))
 const isCollapse = computed(() => !appStore.sidebar.opened)
-const backgroundColor = computed(() => (isLeft.value ? v3SidebarMenuBgColor : undefined))
-const textColor = computed(() => (isLeft.value ? v3SidebarMenuTextColor : undefined))
-const activeTextColor = computed(() => (isLeft.value ? v3SidebarMenuActiveTextColor : undefined))
+const backgroundColor = computed(() => v3SidebarMenuBgColor)
+const textColor = computed(() => v3SidebarMenuTextColor)
+const activeTextColor = computed(() => v3SidebarMenuActiveTextColor)
 const sidebarMenuItemHeight = computed(() => {
-  return !isTop.value ? "var(--v3-sidebar-menu-item-height)" : "var(--v3-navigationbar-height)"
+  return "var(--v3-sidebar-menu-item-height)"
 })
 const sidebarMenuHoverBgColor = computed(() => {
-  return !isTop.value ? "var(--v3-sidebar-menu-hover-bg-color)" : "transparent"
+  return "var(--v3-sidebar-menu-hover-bg-color)"
 })
 const tipLineWidth = computed(() => {
-  return !isTop.value ? "2px" : "0px"
+  return "0px"
 })
 </script>
 
