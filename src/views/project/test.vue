@@ -3,6 +3,7 @@ import { departmentCascade } from "@/api/dict"
 import { departmentUserList } from "@/api/user"
 import { ElMessage } from "element-plus"
 import { onMounted, reactive, ref } from "vue"
+// import editor from "@/components/editor/index.vue"
 
 const data = ref([])
 
@@ -48,6 +49,7 @@ const handleCurrentChange = (page) => {
 
 <template>
   <div class="auth">
+    <!-- <editor /> -->
     <div class="table">
       <el-table
         :data="user.list"
