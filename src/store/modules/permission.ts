@@ -1,10 +1,10 @@
-import { ref } from "vue"
+import routeSettings from "@/config/route"
+import { flatMultiLevelRoutes } from "@/router/helper"
+import { constantRoutes, dynamicRoutes } from "@/router/index.js"
 import store from "@/store"
 import { defineStore } from "pinia"
+import { ref } from "vue"
 import { type RouteRecordRaw } from "vue-router"
-import { constantRoutes, dynamicRoutes } from "@/router"
-import { flatMultiLevelRoutes } from "@/router/helper"
-import routeSettings from "@/config/route"
 
 const hasPermission = (roles: string[], route: RouteRecordRaw) => {
   const routeRoles = route.meta?.roles

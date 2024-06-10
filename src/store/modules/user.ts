@@ -1,5 +1,5 @@
 import { loginApi } from "@/api/login/index.js"
-import { resetRouter } from "@/router"
+import { resetRouter } from "@/router/index.js"
 import store from "@/store"
 import { getToken, removeToken, setToken } from "@/utils/cache/cookies"
 import { defineStore } from "pinia"

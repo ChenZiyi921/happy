@@ -10,6 +10,10 @@ const defaultProps = {
 }
 
 const data = ref([])
+const department = reactive({
+  label: "",
+  total: ""
+})
 const cascadeLoading = ref(true)
 const multipleSelection = ref([])
 
@@ -40,6 +44,11 @@ const getDepartmentUserList = ({ id = "", keywords = "", page = 1, size = 10 } =
     user.list = res.data.list
     user.pageinfo = res.data.pageinfo
   })
+}
+
+const clickDepartment = (data) => {
+  department.value = data.label
+  getDepartmentUserList(data)
 }
 
 const handleSelectionChange = (val) => {
@@ -76,7 +85,7 @@ const handleCurrentChange = (page) => {
         :data="data"
         :props="defaultProps"
         v-loading="cascadeLoading"
-        @node-click="getDepartmentUserList"
+        @node-click="clickDepartment"
       >
         <template #default="{ node, data }">
           <span class="custom-tree-node">
@@ -87,6 +96,12 @@ const handleCurrentChange = (page) => {
       </el-tree>
     </div>
     <div style="width: calc(100% - 314px); margin-left: 14px">
+      <div class="title">{{ department.label }}（{{ user.pageinfo.records }}人）</div>
+      <div>
+        <span>创建员工</span>
+        <span>批量导入</span>
+        <span>移动员工</span>
+      </div>
       <el-table
         :data="user.list"
         style="width: 100%"

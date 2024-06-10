@@ -1,10 +1,10 @@
 import routeSettings from "@/config/route"
-import { createRouter, type RouteRecordRaw } from "vue-router"
+import { createRouter } from "vue-router"
 import { flatMultiLevelRoutes, history } from "./helper"
 
 const Layouts = () => import("@/layouts/index.vue")
 
-export const constantRoutes: RouteRecordRaw[] = [
+export const constantRoutes = [
   {
     path: "/404",
     component: () => import("@/views/404.vue"),
@@ -19,20 +19,44 @@ export const constantRoutes: RouteRecordRaw[] = [
     meta: {
       hidden: true
     }
-  },
+  }
+]
+
+export const dynamicRoutes = [
   {
     path: "/",
     component: Layouts,
-    redirect: "/dashboard",
+    redirect: "/department",
+    meta: {
+      title: "组织架构",
+      svgIcon: "dashboard"
+    },
     children: [
       {
-        path: "dashboard",
+        path: "department",
         component: () => import("@/views/dashboard/index.vue"),
-        name: "Dashboard",
+        name: "department",
         meta: {
-          title: "首页",
-          svgIcon: "dashboard",
-          affix: true
+          title: "部门员工",
+
+        }
+      },
+      {
+        path: "role",
+        component: () => import("@/views/dashboard/index.vue"),
+        name: "role",
+        meta: {
+          title: "角色管理",
+
+        }
+      },
+      {
+        path: "auth",
+        component: () => import("@/views/dashboard/index.vue"),
+        name: "auth",
+        meta: {
+          title: "权限管理",
+
         }
       }
     ]
@@ -54,8 +78,6 @@ export const constantRoutes: RouteRecordRaw[] = [
     ]
   }
 ]
-
-export const dynamicRoutes: RouteRecordRaw[] = []
 
 const router = createRouter({
   history,
