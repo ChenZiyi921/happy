@@ -3,9 +3,10 @@ import { departmentCascade } from "@/api/dict"
 import { departmentUserList } from "@/api/user"
 import { ElMessage } from "element-plus"
 import { onMounted, reactive, ref } from "vue"
+import createModal from "./createModal.vue"
 
 const data = ref([])
-
+const createModalRef = ref()
 const cascadeLoading = ref(true)
 
 const user = reactive({
@@ -44,6 +45,10 @@ const handleSizeChange = (size) => {
 const handleCurrentChange = (page) => {
   getDepartmentUserList({ page })
 }
+
+const updateAuth = (row) => {
+  createModalRef.value.setVisible(true)
+}
 </script>
 
 <template>
@@ -62,12 +67,10 @@ const handleCurrentChange = (page) => {
         <el-table-column prop="department_name" label="部门" min-width="140" />
         <el-table-column prop="account" label="账号" min-width="120" />
         <el-table-column prop="status" label="状态" min-width="80" />
-        <el-table-column prop="address" label="操作" min-width="230" fixed="right">
+        <el-table-column prop="address" label="操作" min-width="120" fixed="right">
           <template #default="{ row }">
-            <span class="operation" v-if="row.status == 1">停用</span>
-            <span class="operation" v-if="row.status == 2">启用</span>
-            <span class="operation">重置密码</span>
-            <span class="operation" v-if="row.status == 2">删除</span>
+            <span class="operation" @click="updateAuth(row)">修改</span>
+            <span class="operation">删除</span>
           </template>
         </el-table-column>
       </el-table>
@@ -81,6 +84,7 @@ const handleCurrentChange = (page) => {
         @current-change="handleCurrentChange"
       />
     </div>
+    <createModal ref="createModalRef"></createModal>
   </div>
 </template>
 <style lang="less" scoped>
@@ -88,6 +92,7 @@ const handleCurrentChange = (page) => {
   height: 100%;
   background-color: #f2f3f5;
   .table {
+    width: 100%;
     padding: 10px;
     box-sizing: border-box;
     background-color: #fff;
