@@ -26,14 +26,18 @@ export const dynamicRoutes = [
   {
     path: "/",
     component: Layouts,
-    redirect: "/department",
+    redirect: "/organization/department"
+  },
+  {
+    path: "/organization",
+    component: Layouts,
     meta: {
       title: "组织架构"
     },
     children: [
       {
         path: "department",
-        component: () => import("@/views/dashboard/index.vue"),
+        component: () => import("@/views/organization/dashboard/index.vue"),
         name: "department",
         meta: {
           title: "部门员工"
@@ -41,7 +45,7 @@ export const dynamicRoutes = [
       },
       {
         path: "role",
-        component: () => import("@/views/dashboard/index.vue"),
+        component: () => import("@/views/organization/dashboard/index.vue"),
         name: "role",
         meta: {
           title: "角色管理"
@@ -49,7 +53,7 @@ export const dynamicRoutes = [
       },
       {
         path: "auth",
-        component: () => import("@/views/auth/index.vue"),
+        component: () => import("@/views/organization/auth/index.vue"),
         name: "auth",
         meta: {
           title: "权限管理"
