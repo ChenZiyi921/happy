@@ -1,3 +1,18 @@
 .el-pagination {
   justify-content: end;
+  background: #fff;
+  padding: 10px;
+}
+.operation {
+  display: inline-block;
+  padding: 0 10px;
+  height: 28px;
+  line-height: 28px;
+  border: 1px solid #ff7e16;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #ff7e16;
+}
+.operation + .operation {
+  margin-left: 10px;
 }
