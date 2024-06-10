@@ -28,8 +28,7 @@ export const dynamicRoutes = [
     component: Layouts,
     redirect: "/department",
     meta: {
-      title: "组织架构",
-      svgIcon: "dashboard"
+      title: "组织架构"
     },
     children: [
       {
@@ -37,8 +36,7 @@ export const dynamicRoutes = [
         component: () => import("@/views/dashboard/index.vue"),
         name: "department",
         meta: {
-          title: "部门员工",
-
+          title: "部门员工"
         }
       },
       {
@@ -46,33 +44,40 @@ export const dynamicRoutes = [
         component: () => import("@/views/dashboard/index.vue"),
         name: "role",
         meta: {
-          title: "角色管理",
-
+          title: "角色管理"
         }
       },
       {
         path: "auth",
-        component: () => import("@/views/dashboard/index.vue"),
+        component: () => import("@/views/auth/index.vue"),
         name: "auth",
         meta: {
-          title: "权限管理",
-
+          title: "权限管理"
         }
       }
     ]
   },
   {
-    path: "/unocss",
+    path: "/project",
     component: Layouts,
-    redirect: "/unocss/index",
+    meta: {
+      title: "项目管理"
+    },
     children: [
       {
-        path: "index",
-        component: () => import("@/views/unocss/index.vue"),
-        name: "UnoCSS",
+        path: "test",
+        component: () => import("@/views/project/test.vue"),
+        name: "test",
         meta: {
-          title: "UnoCSS",
-          svgIcon: "unocss"
+          title: "项目测试"
+        }
+      },
+      {
+        path: "list",
+        component: () => import("@/views/project/test.vue"),
+        name: "list",
+        meta: {
+          title: "项目列表"
         }
       }
     ]

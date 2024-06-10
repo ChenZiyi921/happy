@@ -28,7 +28,6 @@ const activeMenu = computed(() => {
 })
 const noHiddenRoutes = computed(() => permissionStore.routes.filter((item) => !item.meta?.hidden))
 const isCollapse = computed(() => !appStore.sidebar.opened)
-const isLogo = computed(() => isLeft.value && settingsStore.showLogo)
 const backgroundColor = computed(() => (isLeft.value ? v3SidebarMenuBgColor : undefined))
 const textColor = computed(() => (isLeft.value ? v3SidebarMenuTextColor : undefined))
 const activeTextColor = computed(() => (isLeft.value ? v3SidebarMenuActiveTextColor : undefined))
@@ -41,25 +40,21 @@ const sidebarMenuHoverBgColor = computed(() => {
 const tipLineWidth = computed(() => {
   return !isTop.value ? "2px" : "0px"
 })
-// 当为顶部模式时隐藏垂直滚动条
-const hiddenScrollbarVerticalBar = computed(() => {
-  return isTop.value ? "none" : "block"
-})
 </script>
 
 <template>
-  <div :class="{ 'has-logo': isLogo }">
-    <Logo v-if="isLogo" :collapse="isCollapse" />
+  <div :class="'has-logo'">
+    <Logo :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
         :default-active="activeMenu"
-        :collapse="isCollapse && !isTop"
+        :collapse="isCollapse"
         :background-color="backgroundColor"
         :text-color="textColor"
         :active-text-color="activeTextColor"
         :unique-opened="true"
         :collapse-transition="false"
-        :mode="isTop ? 'horizontal' : 'vertical'"
+        :mode="'vertical'"
       >
         <SidebarItem v-for="route in noHiddenRoutes" :key="route.path" :item="route" :base-path="route.path" />
       </el-menu>
@@ -82,30 +77,24 @@ const hiddenScrollbarVerticalBar = computed(() => {
 
 .has-logo {
   .el-scrollbar {
-    // 多 1% 是为了在左侧模式时侧边栏最底部不显示 1px 左右的白色线条
     height: calc(101% - var(--v3-header-height));
   }
 }
 
 .el-scrollbar {
-  // 多 1% 是为了在顶部模式时防止垂直滚动
   height: 101%;
   :deep(.scrollbar-wrapper) {
-    // 限制水平宽度
     overflow-x: hidden !important;
     .el-scrollbar__view {
       height: 100%;
     }
   }
-  // 滚动条
   :deep(.el-scrollbar__bar) {
     &.is-horizontal {
-      // 隐藏水平滚动条
       display: none;
     }
     &.is-vertical {
-      // 当为顶部模式时隐藏垂直滚动条
-      display: v-bind(hiddenScrollbarVerticalBar);
+      display: none;
     }
   }
 }

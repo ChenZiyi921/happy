@@ -35,8 +35,8 @@ const tagsViewStore = useTagsViewStore()
   margin: 10px;
   background: #fff;
   .app-container-grow {
-    flex-grow: 1;
-    padding: 10px;
+    // flex-grow: 1;
+    // padding: 10px;
   }
 }
 </style>
