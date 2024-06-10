@@ -1,10 +1,12 @@
 <script setup>
 import { reactive, ref } from "vue"
 
+const props = defineProps({})
+
 const title = ref("")
 const dialogTableVisible = ref(false)
 const dialogFormVisible = ref(false)
-const formLabelWidth = "140px"
+const formLabelWidth = "100px"
 
 const form = reactive({
   name: "",
@@ -17,7 +19,8 @@ const form = reactive({
   desc: ""
 })
 
-const setVisible = (visible) => {
+const setVisible = (visible, t) => {
+  title.value = t
   dialogFormVisible.value = visible
 }
 
@@ -27,14 +30,26 @@ defineExpose({ setVisible })
 <template>
   <el-dialog v-model="dialogFormVisible" :title="`${title}权限`" width="500">
     <el-form :model="form">
-      <el-form-item label="Promotion name" :label-width="formLabelWidth">
+      <el-form-item label="父级" :label-width="formLabelWidth">
         <el-input v-model="form.name" autocomplete="off" />
       </el-form-item>
-      <el-form-item label="Zones" :label-width="formLabelWidth">
+      <el-form-item label="访问路径" :label-width="formLabelWidth">
+        <el-input v-model="form.name" autocomplete="off" />
+      </el-form-item>
+      <el-form-item label="权限名称" :label-width="formLabelWidth">
+        <el-input v-model="form.name" autocomplete="off" />
+      </el-form-item>
+      <el-form-item label="所属类型" :label-width="formLabelWidth">
         <el-select v-model="form.region" placeholder="Please select a zone">
-          <el-option label="Zone No.1" value="shanghai" />
-          <el-option label="Zone No.2" value="beijing" />
+          <el-option label="菜单" value="menu" />
+          <el-option label="按钮" value="btn" />
         </el-select>
+      </el-form-item>
+      <el-form-item label="所属类型" :label-width="formLabelWidth">
+        <el-radio-group v-model="form.radio1" class="ml-4">
+          <el-radio :value="1" size="large">禁用</el-radio>
+          <el-radio :value="2" size="large">启用</el-radio>
+        </el-radio-group>
       </el-form-item>
     </el-form>
     <template #footer>

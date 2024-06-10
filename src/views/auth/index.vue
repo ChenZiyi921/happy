@@ -4,6 +4,7 @@ import { departmentUserList } from "@/api/user"
 import { ElMessage } from "element-plus"
 import { onMounted, reactive, ref } from "vue"
 import createModal from "./createModal.vue"
+import back from "@/components/back/index.vue"
 
 const data = ref([])
 const createModalRef = ref()
@@ -48,7 +49,11 @@ const handleCurrentChange = (page) => {
 }
 
 const updateAuth = (row) => {
-  createModalRef.value.setVisible(true)
+  createModalRef.value.setVisible(true, "编辑")
+}
+
+const createAuth = () => {
+  createModalRef.value.setVisible(true, "添加")
 }
 
 const deleteBefore = (row) => {
@@ -58,11 +63,16 @@ const deleteBefore = (row) => {
 
 <template>
   <div class="auth">
+    <!-- <back title="标题" /> -->
+    <div style="padding: 10px; background: #fff; margin-bottom: 10px; border-radius: 8px 8px 0 0">
+      <el-button type="warning" plain @click="createAuth">添加权限</el-button>
+    </div>
     <div class="table">
       <el-table
         :data="user.list"
-        style="width: 100%"
-        :header-cell-style="{ backgroundColor: '#F5E9D0' }"
+        style="width: 100%; border-radius: 8px 8px 0 0"
+        :row-style="{ background: '#FBF9F4' }"
+        :header-cell-style="{ backgroundColor: '#F5E9D0', color: '#5B380F' }"
         default-expand-all
       >
         <el-table-column type="selection" width="55" />
