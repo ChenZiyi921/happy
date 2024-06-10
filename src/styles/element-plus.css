@@ -12,7 +12,16 @@
   border-radius: 6px;
   font-size: 14px;
   color: #ff7e16;
+  cursor: pointer;
 }
 .operation + .operation {
   margin-left: 10px;
 }
+/* .el-button--primary {
+  --el-button-bg-color: #ff7e16 !important;
+  --el-button-border-color: #ff7e16 !important;
+  --el-button-hover-bg-color: #ff7e16 !important;
+  --el-button-hover-border-color: #ff7e16 !important;
+  --el-button-active-bg-color: #ff7e16 !important;
+  --el-button-active-border-color: #ff7e16 !important;
+} */

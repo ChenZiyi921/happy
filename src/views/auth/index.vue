@@ -8,6 +8,7 @@ import createModal from "./createModal.vue"
 const data = ref([])
 const createModalRef = ref()
 const cascadeLoading = ref(true)
+const deleteVisible = ref(false)
 
 const user = reactive({
   list: [],
@@ -49,6 +50,10 @@ const handleCurrentChange = (page) => {
 const updateAuth = (row) => {
   createModalRef.value.setVisible(true)
 }
+
+const deleteBefore = (row) => {
+  deleteVisible.value = true
+}
 </script>
 
 <template>
@@ -70,7 +75,7 @@ const updateAuth = (row) => {
         <el-table-column prop="address" label="操作" min-width="120" fixed="right">
           <template #default="{ row }">
             <span class="operation" @click="updateAuth(row)">修改</span>
-            <span class="operation">删除</span>
+            <span class="operation" @click="deleteBefore(row)">删除</span>
           </template>
         </el-table-column>
       </el-table>
@@ -85,6 +90,15 @@ const updateAuth = (row) => {
       />
     </div>
     <createModal ref="createModalRef"></createModal>
+    <el-dialog v-model="deleteVisible" title="提示" width="500" align-center>
+      <div>此操作将永久删除，是否继续？</div>
+      <template #footer>
+        <div class="dialog-footer">
+          <el-button @click="deleteVisible = false">取消</el-button>
+          <el-button color="#ff7e16" style="color: #fff" @click="deleteVisible = false">确定</el-button>
+        </div>
+      </template>
+    </el-dialog>
   </div>
 </template>
 <style lang="less" scoped>
